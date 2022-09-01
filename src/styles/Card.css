@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.card__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+.card__header-content {
+  display: flex;
+  justify-content: space-between;
+}
+.card__header-right {
+  display: flex;
+  align-items: flex-end;
+}
+.card__image-wrapper img {
+  width: 100%;
+}/*# sourceMappingURL=Card.css.map */

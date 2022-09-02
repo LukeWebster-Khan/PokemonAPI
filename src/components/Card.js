@@ -11,15 +11,16 @@ const Card = () => {
       setData(response.data);
     });
   }, []);
-  let pokemonData = data;
-  let name = data.name;
+  // here
+
+  // here
   if (!data) return null;
-  console.log(data.url);
+  console.log(data.sprites, "this is data");
+
   return (
     <>
       <div>
         {/* His name is {data.name} and he is {data.weight} kg */}
-        <p>{console.log(data)}</p>
         <div className="card__container">
           <div className="card__top">
             <div className="card__header-content">

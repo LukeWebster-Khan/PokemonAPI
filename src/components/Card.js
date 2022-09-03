@@ -2,20 +2,21 @@ import React, { useState, useEffect } from "react";
 import "../styles/Card.css";
 import axios from "axios";
 
-const baseUrl = "https://pokeapi.co/api/v2/pokemon/6";
+const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 const Card = () => {
   const [data, setData] = useState([]);
+  const [sprite, setSprite] = useState("");
 
   useEffect(() => {
-    axios.get(baseUrl).then((response) => {
-      setData(response.data);
+    axios.get(baseUrl + "6").then((response) => {
+      setSprite(response.data.sprites.front_shiny);
+      console.log(response.data.sprites.front_shiny, "here");
     });
   }, []);
   // here
 
   // here
   if (!data) return null;
-  console.log(data.sprites, "this is data");
 
   return (
     <>
@@ -34,7 +35,7 @@ const Card = () => {
               </div>
             </div>
             <div className="card__image-wrapper">
-              <img src={data.sprites.front_default} alt="pokemon" />
+              <img src={sprite} alt="pokemon" />
             </div>
           </div>
           <div className="card__bottom">

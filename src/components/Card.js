@@ -7,26 +7,43 @@ const Card = () => {
   const [data, setData] = useState([]);
   const [sprite, setSprite] = useState("");
   const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
 
   const randomNum = Math.floor(Math.random() * 151) + 1;
 
   useEffect(() => {
     axios.get(baseUrl + randomNum).then((response) => {
-      console.log(response.data);
       setSprite(response.data.sprites.front_shiny);
-      console.log(response.data.sprites.front_shiny.front, "here");
+      setName(response.data.name);
+      setType(response.data.types[0].type.name);
+      setWeight(response.data.weight);
+      setHeight(response.data.height);
+      console.log(response.data, "here");
     });
   }, []);
 
-  useEffect(() => {
-    axios.get(baseUrl + randomNum).then((response) => {
-      console.log(response.data);
-      setName(response.data.name);
-    });
-  }, []);
-  const pokemonName = () => {
-    let newName = name.charAt(0).toUpperCase() + name.slice(1);
-    return newName;
+  const capitalise = (arg) => {
+    let newString = arg.charAt(0).toUpperCase() + arg.slice(1);
+    return newString;
+  };
+
+  const kgToLbs = (arg) => {
+    let newWeight = arg / 4.536;
+    return newWeight.toFixed(1);
+  };
+
+  const metersToFeet = (arg) => {
+    let newHeight = arg * 3.281;
+    let ceiledHeight = Math.ceil(newHeight);
+    let string = ceiledHeight.toString();
+    let neww = string.split("");
+    if (neww.length === 2) {
+    }
+    console.log(neww);
+    let result = neww[0] + "'" + neww[1] + '"';
+    return result;
   };
   return (
     <>
@@ -37,7 +54,7 @@ const Card = () => {
             <div className="card__header-content">
               <div className="card__header-left">
                 <p>basic Pokemon</p>
-                <h5>{pokemonName()}</h5>
+                <h5>{capitalise(name)}</h5>
               </div>
               <div className="card__header-right">
                 <p>50 HP</p>
@@ -50,7 +67,10 @@ const Card = () => {
           </div>
           <div className="card__bottom">
             <div className="card__metrics">
-              <p>Lizard Pokemon. Length 2' 0", Weight: 19 lbs</p>
+              <p>
+                {type} Pokemon. Length {metersToFeet(height)}, Weight:{" "}
+                {kgToLbs(weight)} lbs
+              </p>
             </div>
           </div>
         </div>

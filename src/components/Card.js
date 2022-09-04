@@ -6,18 +6,28 @@ const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 const Card = () => {
   const [data, setData] = useState([]);
   const [sprite, setSprite] = useState("");
+  const [name, setName] = useState("");
+
+  const randomNum = Math.floor(Math.random() * 151) + 1;
 
   useEffect(() => {
-    axios.get(baseUrl + "6").then((response) => {
+    axios.get(baseUrl + randomNum).then((response) => {
+      console.log(response.data);
       setSprite(response.data.sprites.front_shiny);
-      console.log(response.data.sprites.front_shiny, "here");
+      console.log(response.data.sprites.front_shiny.front, "here");
     });
   }, []);
-  // here
 
-  // here
-  if (!data) return null;
-
+  useEffect(() => {
+    axios.get(baseUrl + randomNum).then((response) => {
+      console.log(response.data);
+      setName(response.data.name);
+    });
+  }, []);
+  const pokemonName = () => {
+    let newName = name.charAt(0).toUpperCase() + name.slice(1);
+    return newName;
+  };
   return (
     <>
       <div>
@@ -27,7 +37,7 @@ const Card = () => {
             <div className="card__header-content">
               <div className="card__header-left">
                 <p>basic Pokemon</p>
-                <h5>Charmander</h5>
+                <h5>{pokemonName()}</h5>
               </div>
               <div className="card__header-right">
                 <p>50 HP</p>

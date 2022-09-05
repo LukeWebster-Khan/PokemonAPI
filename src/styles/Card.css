@@ -18,4 +18,16 @@
 }
 .card__image-wrapper img {
   width: 100%;
+}
+.card__metrics {
+  font-size: 14px;
+}
+.card__move-container {
+  display: flex;
+  justify-content: space-between;
+}
+.card__horizontal-rule {
+  background-color: black;
+  height: 2px;
+  border: none;
 }/*# sourceMappingURL=Card.css.map */

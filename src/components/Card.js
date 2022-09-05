@@ -41,7 +41,6 @@ const Card = () => {
     let neww = string.split("");
     if (neww.length === 2) {
     }
-    console.log(neww);
     let result = neww[0] + "'" + neww[1] + '"';
     return result;
   };
@@ -72,6 +71,13 @@ const Card = () => {
                 {kgToLbs(weight)} lbs
               </p>
             </div>
+            <div className="card__move-container">
+              <i>icon</i>
+              <p className="card__move">Scratch</p>
+              <p className="card__damage">10</p>
+            </div>
+            <hr className="card__horizontal-rule"></hr>
+            <div className="card__move-container"></div>
           </div>
         </div>
       </div>

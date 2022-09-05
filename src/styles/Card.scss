@@ -21,4 +21,16 @@
       width: 100%;
     }
   }
+  &__metrics {
+    font-size: 14px;
+  }
+  &__move-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__horizontal-rule {
+    background-color: black;
+    height: 2px;
+    border: none;
+  }
 }

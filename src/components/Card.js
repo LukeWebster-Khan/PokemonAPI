@@ -10,6 +10,7 @@ const Card = () => {
   const [type, setType] = useState("");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
+  const [move, setMove] = useState("");
 
   const randomNum = Math.floor(Math.random() * 151) + 1;
 
@@ -20,6 +21,7 @@ const Card = () => {
       setType(response.data.types[0].type.name);
       setWeight(response.data.weight);
       setHeight(response.data.height);
+      setMove(response.data.moves[0].move.name);
       console.log(response.data, "here");
     });
   }, []);
@@ -73,7 +75,7 @@ const Card = () => {
             </div>
             <div className="card__move-container">
               <i>icon</i>
-              <p className="card__move">Scratch</p>
+              <p className="card__move">{move}</p>
               <p className="card__damage">10</p>
             </div>
             <hr className="card__horizontal-rule"></hr>

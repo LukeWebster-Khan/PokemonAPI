@@ -11,6 +11,7 @@ const Card = () => {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [move, setMove] = useState("");
+  const [stat, setStat] = useState("");
 
   const randomNum = Math.floor(Math.random() * 151) + 1;
 
@@ -22,6 +23,7 @@ const Card = () => {
       setWeight(response.data.weight);
       setHeight(response.data.height);
       setMove(response.data.moves[0].move.name);
+      setStat(response.data.stats[0].base_stat);
       console.log(response.data, "here");
     });
   }, []);
@@ -58,7 +60,7 @@ const Card = () => {
                 <h5>{capitalise(name)}</h5>
               </div>
               <div className="card__header-right">
-                <p>50 HP</p>
+                <p>{stat} HP</p>
                 <p>*icon*</p>
               </div>
             </div>

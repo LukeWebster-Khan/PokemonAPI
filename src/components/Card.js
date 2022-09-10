@@ -55,6 +55,7 @@ const Card = () => {
     let result = neww[0] + "'" + neww[1] + '"';
     return result;
   };
+  console.log('format')
   return (
     <>
       <div>

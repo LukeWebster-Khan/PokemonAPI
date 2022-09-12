@@ -78,8 +78,8 @@ const Card = () => {
           <div className="card__bottom">
             <div className="card__metrics">
               <p>
-                {type} Pokemon. Length {metersToFeet(height)}, Weight:{" "}
-                {kgToLbs(weight)} lbs
+                {capitalise(type)} Pokemon. Length {metersToFeet(height)},
+                Weight: {kgToLbs(weight)} lbs
               </p>
             </div>
             <div className="card__move-container">
